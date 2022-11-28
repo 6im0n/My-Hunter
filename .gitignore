@@ -9,7 +9,6 @@ include/my.h
 .vscode
 *.gcda
 *.gcno
-main.c
 real-time-norminette-report
 *.old
 libmy.a
