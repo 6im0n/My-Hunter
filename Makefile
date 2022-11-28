@@ -6,7 +6,12 @@
 ##
 
 
-SRC = 		main.c
+SRC = 		main.c \
+			game.c \
+			game_monster.c \
+			game_handle_score.c \
+			game_cursor.c \
+			game_background.c
 
 OBJ =   $(SRC:.c=.o)
 

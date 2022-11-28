@@ -1,21 +1,19 @@
 /*
 ** EPITECH PROJECT, 2022
-** bs graphic
+** my hunter
 ** File description:
-** graphic
+** my hunter
 */
 
 #include <SFML/Graphics.h>
 #include <SFML/System.h>
 #include <time.h>
+#include <stdbool.h>
 
+#ifndef STRUCTS_H_
+    #define STRUCTS_H_
 
-#ifndef SFML_H_
-    #define SFML_H_
-    #define EXIT_SUCCESS 0
-    #define EXIT_FAILURE 84
-
-    struct framebuffer {
+        struct framebuffer {
         unsigned int width;
         unsigned int height;
         sfUint8 *pixels;
@@ -49,16 +47,18 @@
         sfFont *font;
         sfVector2f pos;
         int score;
+        sfClock *clock;
+        sfTime time;
+        float miliseconds;
+        bool shooted;
 
     } score_t;
 
+    typedef struct background_s {
+        sfTexture *texture;
+        sfSprite *sprite;
+    } background_t;
+
     typedef struct framebuffer framebuffer_t;
-    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-    void framebuffer_destroy(framebuffer_t *framebuffer);
-    void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sfColor color);
 
-
-
-typedef struct framebuffer framebuffer_t;
-
-#endif /* !SFML_H_ */
+#endif /* !STRUCTS_H_ */
