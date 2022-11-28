@@ -12,7 +12,5 @@ include/my.h
 main.c
 real-time-norminette-report
 *.old
-A
-I
 libmy.a
-my_ls
+myhunter
