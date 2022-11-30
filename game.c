@@ -21,15 +21,17 @@ int game(void)
     init_animated(&animated);
     init_cursor(&cursor);
     init_score(&score);
+    init_background(&background);
 
     while (sfRenderWindow_isOpen(window)){
         while (sfRenderWindow_pollEvent(window, &event)){
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }
-        sfRenderWindow_clear(window, sfBlack);
         load_all(window, &animated, &cursor, &score, &background);
+        get_player_score(&score, &animated, &cursor);
         sfRenderWindow_display(window);
+        sfRenderWindow_clear(window, sfBlack);
     }
     destroy_all(window, &animated, &cursor, &score, &background);
 
@@ -54,5 +56,4 @@ void load_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, sc
     set_animated_sprite(window, animated);
     set_cursor(window, cursor);
     display_player_score(window,score);
-    get_player_score(&score, &animated, &cursor);
 }

@@ -20,7 +20,6 @@ void init_animated(animated_t *animated)
     animated->rect_source_sprite.width = 72;
 
     animated->clock = sfClock_create();
-    animated->time = sfClock_getElapsedTime(animated->clock);
     animated->sprite = sfSprite_create();
     animated->pos.x = 0.0;
     animated->pos.y = 0.0;
@@ -37,7 +36,7 @@ void set_animated_sprite(sfRenderWindow *window, animated_t *animated)
 
         animated->time = sfClock_getElapsedTime(animated->clock);
         animated->miliseconds = animated->time.microseconds / 1000.0;
-        if (animated->miliseconds > 1000){
+        if (animated->miliseconds > 75){
             if (animated->rect_source_sprite.left > 400) {
                 animated->rect_source_sprite.left = 0;
                 } else
@@ -52,10 +51,10 @@ void set_animated_sprite(sfRenderWindow *window, animated_t *animated)
 
 void shift_monster(animated_t *animated)
 {
-    animated->pos.x = animated->pos.x + 20;
+    animated->pos.x = animated->pos.x+20;
     if (animated->pos.x > 1920)
         animated->pos.x = 0.0;
-    animated->pos.y = animated->pos.y + 20;
+    animated->pos.y = animated->pos.y + 1;
     if (animated->pos.y > 1080)
         animated->pos.y = 0.0;
     sfSprite_setPosition(animated->sprite, animated->pos);

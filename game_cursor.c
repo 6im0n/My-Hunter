@@ -32,7 +32,7 @@ void set_cursor(sfRenderWindow *window, cursor_t *cursor)
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
         cursor->time = sfClock_getElapsedTime(cursor->clock);
         cursor->miliseconds = cursor->time.microseconds / 1000.0;
-        if (cursor->miliseconds > 75){
+        if (cursor->miliseconds > 25){
             if (cursor->rect_source_sprite.left >= 640) {
                 cursor->rect_source_sprite.left = 0;
                 } else

@@ -18,6 +18,7 @@
     #define EXIT_SUCCESS 0
     #define EXIT_FAILURE 84
     int game(void);
+    char *score_to_str(int nb);
     void init_animated(animated_t *animated);
     void set_animated_sprite(sfRenderWindow *window, animated_t *animated);
     void init_cursor(cursor_t *cursor);
@@ -30,5 +31,6 @@
     void shift_cursor(sfRenderWindow *window, cursor_t *cursor);
     void destroy_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background);
     void load_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background);
+
 
 #endif /* !SFML_H_ */

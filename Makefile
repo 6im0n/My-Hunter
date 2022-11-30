@@ -11,6 +11,7 @@ SRC = 		main.c \
 			game_monster.c \
 			game_handle_score.c \
 			game_cursor.c \
+			game_other.c \
 			game_background.c
 
 OBJ =   $(SRC:.c=.o)
@@ -49,7 +50,7 @@ NAME = my_hunter
 
 
 $(NAME):   $(OBJ)
-	gcc -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio $(OBJ) -o $(NAME)
+	gcc -lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio -lm $(OBJ) -o $(NAME)
 
 clean:
 	rm -f $(OBJ)
