@@ -12,7 +12,8 @@ SRC = 		main.c \
 			game_handle_score.c \
 			game_cursor.c \
 			game_other.c \
-			game_background.c
+			game_background.c \
+			menu.c
 
 OBJ =   $(SRC:.c=.o)
 
