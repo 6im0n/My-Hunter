@@ -27,7 +27,7 @@ void init_cursor(cursor_t *cursor)
 
 void set_cursor(sfRenderWindow *window, cursor_t *cursor)
 {
-    //sfRenderWindow_setMouseCursorVisible(window,sfFalse);
+    sfRenderWindow_setMouseCursorVisible(window,sfFalse);
     shift_cursor(window, cursor);
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
         cursor->time = sfClock_getElapsedTime(cursor->clock);

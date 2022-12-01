@@ -13,11 +13,46 @@
 #ifndef STRUCTS_H_
     #define STRUCTS_H_
 
-        struct framebuffer {
-        unsigned int width;
-        unsigned int height;
-        sfUint8 *pixels;
-    };
+    typedef enum type_sprite_e{
+        BACKGROUND,
+        LOGO,
+        SPRITE_MAX
+    } type_sprite_t;
+
+    typedef enum type_text_e{
+        PLAY_BTN,
+        OPTION,
+        QUIT,
+        TEXT_MAX
+    } type_text_t;
+
+    typedef struct text_init_s {
+        sfText *text;
+        sfFont *font;
+        sfColor color;
+        sfVector2f pos;
+    } text_init_t;
+
+    typedef struct sprite_init_s {
+        sfTexture *texture;
+        sfSprite *sprite;
+        sfIntRect rect_full_source_sprite ;
+        sfIntRect rect_source_sprite;
+        sfVector2f pos;
+        sfVector2f scale;
+    } sprite_init_t;
+
+
+    typedef struct menu_s {
+        sprite_init_t *sprite_init;
+        text_init_t *text_init;
+    } menu_t;
+
+
+    typedef struct scene_s{
+        bool game;
+        bool option;
+    } scene_t;
 
     typedef struct animated_s {
         sfTexture *texture;

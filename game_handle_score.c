@@ -16,8 +16,7 @@ void display_player_score(sfRenderWindow *window,score_t *score)
     char *str3 = my_strcat(str2, str);
     sfText_setString(score->text, str3);
     sfRenderWindow_drawText(window, score->text, NULL);
-
-
+    free(str);
 }
 
 void init_score(score_t *score)

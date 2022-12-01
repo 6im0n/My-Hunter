@@ -14,28 +14,33 @@ int game(void)
     animated_t animated;
     cursor_t cursor;
     score_t score;
+    scene_t scene;
+    menu_t menu;
     score.score = 0;
     background_t background;
+    scene.game = false;
 
     window = sfRenderWindow_create(video_mode,"My_Hunter", sfClose | sfResize, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
-    init_animated(&animated);
-    init_cursor(&cursor);
-    init_score(&score);
-    init_background(&background);
+    init_game(window, &animated, &cursor, &score, &background);
+    init_menu(window, &menu);
+
     while (sfRenderWindow_isOpen(window)){
         while (sfRenderWindow_pollEvent(window, &event)){
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }
-        load_all(window, &animated, &cursor, &score, &background);
-        get_player_score(&score, &animated, &cursor);
-        sfRenderWindow_display(window);
-        sfRenderWindow_clear(window, sfBlack);
+        event_manager_menu(window, &scene, &menu);
+        if(scene.game == true)
+        load_game(window, &animated, &cursor, &score, &background);
+        else
+        load_menu(window,&menu);
+
     }
     destroy_all(window, &animated, &cursor, &score, &background);
 
 }
+
 
 void destroy_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background)
 {
@@ -50,10 +55,46 @@ void destroy_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor,
     sfRenderWindow_destroy(window);
 }
 
-void load_all(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background)
+void malloc_all_struct(menu_t *menu)
+{
+   menu->sprite_init = malloc(sizeof(sprite_init_t)* SPRITE_MAX);
+   menu->text_init = malloc(sizeof(text_init_t)* TEXT_MAX);
+}
+void load_game(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background)
 {
     set_background(window,background);
     set_animated_sprite(window, animated);
     set_cursor(window, cursor);
     display_player_score(window,score);
+    get_player_score(score, animated, cursor);
+    sfRenderWindow_display(window);
+    sfRenderWindow_clear(window, sfBlack);
+}
+
+void init_game(sfRenderWindow *window, animated_t *animated, cursor_t *cursor, score_t *score, background_t *background)
+{
+    init_animated(animated);
+    init_cursor(cursor);
+    init_score(score);
+    init_background(background);
+}
+
+void init_menu(sfRenderWindow *window, menu_t *menu)
+{
+    init_bg_menu(menu);
+    init_play_button(menu,window);
+    init_quit_button(menu,window);
+    init_option_button(menu,window);
+    init_logo(menu);
+
+}
+
+void load_menu(sfRenderWindow *window, menu_t *menu)
+{
+    set_bg_menu(window,menu);
+    set_buttons(window, menu);
+    set_logo(window, menu);
+    sfRenderWindow_display(window);
+    sfRenderWindow_clear(window, sfBlack);
+
 }

@@ -11,12 +11,12 @@
 #include <stdbool.h>
 #include <math.h>
 #include "my_hunter_structs.h"
+#include <stdlib.h>
 
 
 #ifndef SFML_H_
     #define SFML_H_
     #define EXIT_SUCCESS 0
-    #define EXIT_FAILURE 84
     int game(void);
     char *score_to_str(int nb);
     void init_animated(animated_t *animated);
