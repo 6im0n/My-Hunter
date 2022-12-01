@@ -27,7 +27,8 @@
         sfClock *clock;
         sfTime time;
         float miliseconds;
-        sfVector2f pos
+        sfVector2f pos;
+        int random_value;
 
     } animated_t;
 

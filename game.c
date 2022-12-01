@@ -16,13 +16,13 @@ int game(void)
     score_t score;
     score.score = 0;
     background_t background;
+
     window = sfRenderWindow_create(video_mode,"My_Hunter", sfClose | sfResize, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     init_animated(&animated);
     init_cursor(&cursor);
     init_score(&score);
     init_background(&background);
-
     while (sfRenderWindow_isOpen(window)){
         while (sfRenderWindow_pollEvent(window, &event)){
             if (event.type == sfEvtClosed)

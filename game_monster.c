@@ -19,6 +19,9 @@ void init_animated(animated_t *animated)
     animated->rect_source_sprite.height = 92;
     animated->rect_source_sprite.width = 72;
 
+    animated->random_value = rand()%1000;
+    
+
     animated->clock = sfClock_create();
     animated->sprite = sfSprite_create();
     animated->pos.x = 0.0;
@@ -52,9 +55,11 @@ void set_animated_sprite(sfRenderWindow *window, animated_t *animated)
 void shift_monster(animated_t *animated)
 {
     animated->pos.x = animated->pos.x+20;
-    if (animated->pos.x > 1920)
-        animated->pos.x = 0.0;
     animated->pos.y = animated->pos.y + 1;
+    if (animated->pos.x > 1920){
+        animated->pos.x = 0.0;
+        animated->pos.y = animated->pos.y + animated->random_value ;
+    }
     if (animated->pos.y > 1080)
         animated->pos.y = 0.0;
     sfSprite_setPosition(animated->sprite, animated->pos);

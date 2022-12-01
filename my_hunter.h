@@ -20,6 +20,7 @@
     int game(void);
     char *score_to_str(int nb);
     void init_animated(animated_t *animated);
+    char * my_strcpy ( char * dest , char const * src );
     void set_animated_sprite(sfRenderWindow *window, animated_t *animated);
     void init_cursor(cursor_t *cursor);
     void set_cursor(sfRenderWindow *window, cursor_t *cursor);
