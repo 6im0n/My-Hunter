@@ -50,7 +50,7 @@ void load_base(sfRenderWindow *window, game_t
     if (scene->game == true)
         load_game(window, game);
     else{
-        game_reset(window,game);
+        game_reset(game);
         load_menu(window,menu);
     }
 }
@@ -61,7 +61,7 @@ void close_event(sfRenderWindow *window, sfEvent event)
         sfRenderWindow_close(window);
 }
 
-void game_reset(sfRenderWindow *window,game_t *game)
+void game_reset(game_t *game)
 {
     game->score = 0;
     game->lives = 3;
