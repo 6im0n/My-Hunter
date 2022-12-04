@@ -64,7 +64,7 @@ NAME = my_hunter
 
 
 $(NAME):   $(OBJ)
-	gcc $(CSFMLFLAGS) -lm $(OBJ) -o $(NAME)
+	gcc -g3 $(CSFMLFLAGS) -lm $(OBJ) -o $(NAME)
 	touch -f save_score
 
 clean:

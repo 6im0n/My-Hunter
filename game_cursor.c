@@ -50,9 +50,10 @@ void move_texture_square(game_t *game)
     if (game->miliseconds - game->time_ref[TIME_CURSOR] > 100) {
         if (game->sprite_init[CURSOR].rect_source_sprite.left >= 640) {
             game->sprite_init[CURSOR].rect_source_sprite.left = 0;
-        } else
+        } else {
             game->sprite_init[CURSOR].rect_source_sprite.left += 162;
             game->time_ref[TIME_CURSOR] = game->miliseconds;
+        }
     }
 }
 

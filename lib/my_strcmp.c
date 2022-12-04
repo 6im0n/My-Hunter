@@ -4,7 +4,7 @@
 ** File description:
 ** Personal "print fonctions"
 */
-
+#include "../include/my_hunter.h"
 int compare_s1_to_s2 (char const *s1, char const *s2)
 {
     int i = 0;
@@ -14,6 +14,7 @@ int compare_s1_to_s2 (char const *s1, char const *s2)
         }
         i++;
     }
+    return 0;
 }
 
 int compare_s2_to_s1 (char const *s1, char const *s2)
@@ -25,6 +26,7 @@ int compare_s2_to_s1 (char const *s1, char const *s2)
         }
         i++;
     }
+    return 0;
 }
 
 int my_strcmp (char const *s1 , char const *s2 )
@@ -37,4 +39,5 @@ int my_strcmp (char const *s1 , char const *s2 )
     } else {
         compare_s2_to_s1(s1,s2);
     }
+    return 0;
 }

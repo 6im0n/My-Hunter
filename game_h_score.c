@@ -20,7 +20,6 @@ void save_hscore(game_t *game)
 int get_score(void)
 {
     int score = 0;
-    int size_buffer;
     FILE *fd;
     fd = fopen("save_score","r");
     fread(&score,sizeof(int),1, fd);

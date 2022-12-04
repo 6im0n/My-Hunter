@@ -69,5 +69,34 @@
     void orange_color(menu_t *menu, int sprite_enum);
     void set_buttons(sfRenderWindow *window, menu_t *menu);
     bool shooted_monster(game_t *game);
+    void click_event_load_game(sfRenderWindow *window, scene_t *scene);
+    int len_of_int(int n);
+    int get_power(int nb);
+    int abs(int N);
+    int my_pow(int x, int a);
+    int my_strcmp (char const *s1 , char const *s2 );
+    char *my_strcat(char *dest, char const *src);
+    int my_strlen(char const *str);
+    int my_getnbr(char const *str);
+    char * my_strdup ( char const * src );
+    char * my_strcpy ( char * dest , char const * src );
+    void help(void);
+    void init_base(sfRenderWindow *window, game_t *game, menu_t *menu);
+    void close_event(sfRenderWindow *window, sfEvent event);
+    void load_base(sfRenderWindow *window, game_t *game, menu_t *menu, scene_t *scene);
+    int get_score(void);
+    void display_player_h_score(sfRenderWindow *window,game_t *game);
+    void display_player_lives(sfRenderWindow *window,game_t *game);
+    void init_h_score(game_t *game);
+    void init_hunter_logo(menu_t *menu);
+    void init_lives(game_t *game);
+    void destroy_text(game_t *game, menu_t *menu);
+    void destroy_sprite(game_t *game, menu_t *menu);
+    void shift_monster(game_t *game);
+    void lives_manager(sfRenderWindow *window, game_t *game);
+    void move_texture_square(game_t *game);
+    void save_hscore(game_t *game);
+    void set_text_orange(menu_t *menu, int sprite_enum);
+    void click_event_close(sfRenderWindow *window, scene_t *scene);
 
 #endif /* !SFML_H_ */

@@ -9,7 +9,7 @@
 int main(int argc, char const **argv)
 {
     if (argc >= 2 && (my_strcmp(argv[1],"-h") == 0
-    || my_strcmp(argv[1],"help"))) {
+    || my_strcmp(argv[1],"--help") == 0)) {
         help();
         return 0;
     } else if (argc >= 2) {

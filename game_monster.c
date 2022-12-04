@@ -38,11 +38,12 @@ void set_animated_sprite(sfRenderWindow *window, game_t *game)
         if (game->miliseconds - game->time_ref[TIME_MONSTER] > 75 / score) {
             if (game->sprite_init[ANIMATED].rect_source_sprite.left > 400) {
                 game->sprite_init[ANIMATED].rect_source_sprite.left = 0;
-            } else
+            } else {
                 game->sprite_init[ANIMATED].rect_source_sprite.left += 73;
                 shift_monster(game);
                 lives_manager(window,game);
                 game->time_ref[TIME_MONSTER] = game->miliseconds;
+            }
         }
         sfSprite_setTextureRect(game->sprite_init[ANIMATED].sprite,
         game->sprite_init[ANIMATED].rect_source_sprite);
