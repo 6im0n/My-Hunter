@@ -34,7 +34,6 @@
     void init_score(game_t *game);
     void get_player_score(game_t *game);
     void shift_cursor(sfRenderWindow *window, game_t *game);
-    void destroy_all(sfRenderWindow *window, game_t *game);
     void load_all(sfRenderWindow *window, game_t *game);
     bool hit_box_manager_menu(sfRenderWindow *window, menu_t *menu,
     int sprite_enum);
@@ -66,7 +65,7 @@
     void get_player_score(game_t *game);
     void shift_cursor(sfRenderWindow *window, game_t *game);
     void shift_monster(game_t *game);
-    void destroy_all(sfRenderWindow *window, game_t *game);
+    void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu);
     void orange_color(menu_t *menu, int sprite_enum);
     void set_buttons(sfRenderWindow *window, menu_t *menu);
     bool shooted_monster(game_t *game);

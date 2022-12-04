@@ -6,15 +6,33 @@
 */
 #include "include/my_hunter.h"
 
-// void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu)
-// {
-//     sfSprite_destroy(sprite);
-//     sfTexture_destroy(animated->texture);
-//     sfText_destroy(score->text);
-//     sfFont_destroy(score->font);
-//     sfSprite_destroy(cursor->sprite);
-//     sfTexture_destroy(cursor->texture);
-//     sfSprite_destroy(background->sprite);
-//     sfTexture_destroy(background->texture);
-//     sfRenderWindow_destroy(window);
-// }
+void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu)
+{
+    destroy_sprite(game, menu);
+    destroy_text(game, menu);
+    sfClock_destroy(game->clock);
+    free(game->time_ref);
+    sfRenderWindow_destroy(window);
+}
+
+void destroy_text(game_t *game, menu_t *menu)
+{
+    for (int i = 0; i < GAME_TEXT_MAX; i++) {
+        sfText_destroy(game->text_init[i].text);
+    }
+    for (int i = 0; i < MENU_TEXT_MAX; i++) {
+        sfText_destroy(menu->text_init[i].text);
+    }
+    free(game->text_init);
+    free(menu->text_init);
+}
+
+void destroy_sprite(game_t *game, menu_t *menu)
+{
+    for (int i = 0; i < GAME_SPRITE_MAX; i++) {
+        sfSprite_destroy(game->sprite_init[i].sprite);
+        sfTexture_destroy(game->sprite_init[i].texture);
+    }
+    free(game->sprite_init);
+    free(menu->sprite_init);
+}

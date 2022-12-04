@@ -15,7 +15,7 @@ int game(void)
     scene_t scene;
     menu_t menu;
 
-    window = sfRenderWindow_create(video_mode,"My_Hunter",
+    window = sfRenderWindow_create(video_mode,"DOOM Hunter V1",
     sfClose | sfResize, NULL);
     init_base(window, &game, &menu);
     while (sfRenderWindow_isOpen(window)){
@@ -25,13 +25,14 @@ int game(void)
         srand(time(0));
         load_base(window, &game, &menu, &scene);
     }
-    //destroy_all(window, &game);
+    destroy_all(window, &game, &menu);
 }
 
 void init_base(sfRenderWindow *window, game_t *game, menu_t *menu)
 {
     game->time_ref = 0;
     game->score = 0;
+    game->lives = 3;
     game->h_score = get_score();
     sfRenderWindow_setFramerateLimit(window, 60);
     malloc_all_struct(menu, game);

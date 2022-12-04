@@ -20,6 +20,7 @@ void set_buttons(sfRenderWindow *window, menu_t *menu)
     sfRenderWindow_drawText(window, menu->text_init[PLAY_BTN].text, NULL);
     sfRenderWindow_drawText(window, menu->text_init[CLOSE].text, NULL);
     sfRenderWindow_drawText(window, menu->text_init[OPTION].text, NULL);
+    sfRenderWindow_drawText(window, menu->text_init[LOGO_HUNTER].text, NULL);
 }
 
 void set_logo(sfRenderWindow *window, menu_t *menu)

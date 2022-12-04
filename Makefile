@@ -24,6 +24,7 @@ SRC = 		lib/int_fnct.c \
 			init_menu.c \
 			load_menu.c \
 			game_init_score.c\
+			init_menu_text.c\
 			menu.c
 
 OBJ =   $(SRC:.c=.o)

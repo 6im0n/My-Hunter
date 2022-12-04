@@ -38,3 +38,19 @@ void init_h_score(game_t *game)
     game->text_init[H_SCORE].pos);
     sfFont_destroy(font);
 }
+
+void init_lives(game_t *game)
+{
+    game->text_init[LIVES].pos.x = 1800;
+    game->text_init[LIVES].pos.y = 0;
+    sfColor color = {255, 255, 125, 255};
+    game->text_init[LIVES].text = sfText_create();
+    sfFont *font;
+    font = sfFont_createFromFile("assets/doom_font.ttf");
+    sfText_setFont( game->text_init[LIVES].text, font);
+    sfText_setCharacterSize(game->text_init[LIVES].text, 50);
+    sfText_setColor(game->text_init[LIVES].text, color);
+    sfText_setPosition(game->text_init[LIVES].text,
+    game->text_init[LIVES].pos);
+    sfFont_destroy(font);
+}

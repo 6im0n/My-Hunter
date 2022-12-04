@@ -19,6 +19,18 @@ void display_player_h_score(sfRenderWindow *window,game_t *game)
     free(str);
 }
 
+void display_player_lives(sfRenderWindow *window,game_t *game)
+{
+    char *str = score_to_str(game->lives);
+    char *str2 = malloc(sizeof(char)*my_strlen(str)+ 22);
+    my_strcpy(str2,"Lives : ");
+    char *str3 = my_strcat(str2, str);
+    sfText_setString(game->text_init[LIVES].text, str3);
+    sfRenderWindow_drawText(window, game->text_init[LIVES].text, NULL);
+    free(str);
+}
+
+
 void display_player_score(sfRenderWindow *window,game_t *game)
 {
 

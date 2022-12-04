@@ -13,23 +13,33 @@
 #ifndef STRUCTS_H_
     #define STRUCTS_H_
 
-    typedef enum type_sprite_e{
+    typedef enum game_sprite_e{
         BACKGROUND_GAME,
-        LOGO,
         ANIMATED,
         CURSOR,
-        BACKGROUND_MENU,
-        SPRITE_MAX
-    } type_sprite_t;
+        GAME_SPRITE_MAX
+    } game_sprite_t;
 
-    typedef enum type_text_e{
-        PLAY_BTN,
-        OPTION,
-        CLOSE,
+    typedef enum menu_sprite_s{
+        LOGO,
+        BACKGROUND_MENU,
+        MENU_SPRITE_MAX
+    } menu_sprite_t;
+
+    typedef enum game_text_e{
+        LIVES,
         SCORE,
         H_SCORE,
-        TEXT_MAX
-    } type_text_t;
+        GAME_TEXT_MAX
+    } game_text_t;
+
+    typedef enum menu_text_e{
+        PLAY_BTN,
+        LOGO_HUNTER,
+        OPTION,
+        CLOSE,
+        MENU_TEXT_MAX
+    } menu_text_t;
 
     typedef enum time_ref_s{
         TIME_CURSOR,
@@ -70,6 +80,7 @@
         bool shooted;
         int score;
         int h_score;
+        int lives;
         float *time_ref;
     } game_t;
 
