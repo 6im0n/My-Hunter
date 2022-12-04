@@ -1,9 +1,12 @@
-modulo du temps en utilisant une clock pour un seul
+#"modulo du temps en utilisant une clock pour un seul"
 
-menu 
+#menu 
 menu pause
 (menu option)
 lore
 sauver le score
 
 si le joueur laisse passé 3 monstre il meurt
+cast int toute les clock
+
+bouton close in game

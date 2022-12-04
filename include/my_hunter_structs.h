@@ -14,17 +14,29 @@
     #define STRUCTS_H_
 
     typedef enum type_sprite_e{
-        BACKGROUND,
+        BACKGROUND_GAME,
         LOGO,
+        ANIMATED,
+        CURSOR,
+        BACKGROUND_MENU,
         SPRITE_MAX
     } type_sprite_t;
 
     typedef enum type_text_e{
         PLAY_BTN,
         OPTION,
-        QUIT,
+        CLOSE,
+        SCORE,
+        H_SCORE,
         TEXT_MAX
     } type_text_t;
+
+    typedef enum time_ref_s{
+        TIME_CURSOR,
+        TIME_MONSTER,
+        TIME_SCORE,
+        TIME_MAX
+    } time_ref_t;
 
     typedef struct text_init_s {
         sfText *text;
@@ -48,52 +60,23 @@
         text_init_t *text_init;
     } menu_t;
 
+    typedef struct game_s {
+        sprite_init_t *sprite_init;
+        text_init_t *text_init;
+        sfClock *clock;
+        sfTime time;
+        float miliseconds;
+        int ramdom_y;
+        bool shooted;
+        int score;
+        int h_score;
+        float *time_ref;
+    } game_t;
 
     typedef struct scene_s{
         bool game;
         bool option;
     } scene_t;
-
-    typedef struct animated_s {
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfIntRect rect_full_source_sprite ;
-        sfIntRect rect_source_sprite;
-        sfClock *clock;
-        sfTime time;
-        float miliseconds;
-        sfVector2f pos;
-        int random_value;
-
-    } animated_t;
-
-    typedef struct cursor_s {
-        sfTexture *texture;
-        sfSprite *sprite;
-        sfIntRect rect_full_source_sprite ;
-        sfIntRect rect_source_sprite;
-        sfClock *clock;
-        sfTime time;
-        float miliseconds;
-        sfVector2f pos
-    } cursor_t;
-
-    typedef struct score_s {
-        sfText *text;
-        sfFont *font;
-        sfVector2f pos;
-        int score;
-        sfClock *clock;
-        sfTime time;
-        float miliseconds;
-        bool shooted;
-
-    } score_t;
-
-    typedef struct background_s {
-        sfTexture *texture;
-        sfSprite *sprite;
-    } background_t;
 
     typedef struct framebuffer framebuffer_t;
 

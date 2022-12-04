@@ -4,58 +4,66 @@
 ** File description:
 ** my hunter
 */
+#include "include/my_hunter.h"
 
-#include "my_hunter.h"
-
-void init_cursor(cursor_t *cursor)
+void init_cursor(game_t *game)
 {
-    cursor->rect_full_source_sprite.left = 0;
-    cursor->rect_full_source_sprite.top = 0;
-    cursor->rect_full_source_sprite.height = 251;
-    cursor->rect_full_source_sprite.width = 821;
-    cursor->rect_source_sprite.left = 0;
-    cursor->rect_source_sprite.top = 0;
-    cursor->rect_source_sprite.height = 251;
-    cursor->rect_source_sprite.width = 162;
-    cursor->clock = sfClock_create();
-    cursor->time = sfClock_getElapsedTime(cursor->clock);
-    cursor->sprite = sfSprite_create();
-    cursor->pos.x = 0.0;
-    cursor->pos.y = 0.0;
-    cursor->texture = sfTexture_createFromFile("assets/cursor.png", &cursor->rect_full_source_sprite);
+    game->sprite_init[CURSOR].rect_full_source_sprite.left = 0;
+    game->sprite_init[CURSOR].rect_full_source_sprite.top = 0;
+    game->sprite_init[CURSOR].rect_full_source_sprite.height = 251;
+    game->sprite_init[CURSOR].rect_full_source_sprite.width = 821;
+    game->sprite_init[CURSOR].rect_source_sprite.left = 0;
+    game->sprite_init[CURSOR].rect_source_sprite.top = 0;
+    game->sprite_init[CURSOR].rect_source_sprite.height = 251;
+    game->sprite_init[CURSOR].rect_source_sprite.width = 162;
+    game->time = sfClock_getElapsedTime(game->clock);
+    game->sprite_init[CURSOR].sprite = sfSprite_create();
+    game->sprite_init[CURSOR].pos.x = 0.0;
+    game->sprite_init[CURSOR].pos.y = 0.0;
+    game->sprite_init[CURSOR].texture = sfTexture_createFromFile
+    ("assets/cursor.png", &game->sprite_init[CURSOR].rect_full_source_sprite);
 }
 
-void set_cursor(sfRenderWindow *window, cursor_t *cursor)
+void set_cursor(sfRenderWindow *window, game_t *game)
 {
     sfRenderWindow_setMouseCursorVisible(window,sfFalse);
-    shift_cursor(window, cursor);
+    shift_cursor(window, game);
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
-        cursor->time = sfClock_getElapsedTime(cursor->clock);
-        cursor->miliseconds = cursor->time.microseconds / 1000.0;
-        if (cursor->miliseconds > 25){
-            if (cursor->rect_source_sprite.left >= 640) {
-                cursor->rect_source_sprite.left = 0;
-                } else
-                cursor->rect_source_sprite.left += 162;
-                sfClock_restart(cursor->clock);
-        }
-        sfSprite_setTextureRect(cursor->sprite, cursor->rect_source_sprite);
-        sfRenderWindow_drawSprite(window, cursor->sprite, NULL);
+        game->time = sfClock_getElapsedTime(game->clock);
+        game->miliseconds = game->time.microseconds / 1000.0;
+        move_texture_square(game);
+        sfSprite_setTextureRect(game->sprite_init[CURSOR].sprite,
+        game->sprite_init[CURSOR].rect_source_sprite);
+        sfRenderWindow_drawSprite(window, game->sprite_init[CURSOR].sprite,
+        NULL);
     } else{
-        cursor->rect_source_sprite.left = 0;
-        sfSprite_setTextureRect(cursor->sprite, cursor->rect_source_sprite);
-        sfRenderWindow_drawSprite(window, cursor->sprite, NULL);
+        game->sprite_init[CURSOR].rect_source_sprite.left = 0;
+        sfSprite_setTextureRect(game->sprite_init[CURSOR].sprite,
+        game->sprite_init[CURSOR].rect_source_sprite);
+        sfRenderWindow_drawSprite(window, game->sprite_init[CURSOR].sprite,
+        NULL);
     }
-
 }
 
-void shift_cursor(sfRenderWindow *window, cursor_t *cursor)
+void move_texture_square(game_t *game)
 {
-    sfSprite_setTexture(cursor->sprite, cursor->texture, sfTrue);
-    sfSprite_setScale(cursor->sprite, (sfVector2f) {1.5,1.5} );
+    if (game->miliseconds - game->time_ref[TIME_CURSOR] > 100) {
+        if (game->sprite_init[CURSOR].rect_source_sprite.left >= 640) {
+            game->sprite_init[CURSOR].rect_source_sprite.left = 0;
+        } else
+            game->sprite_init[CURSOR].rect_source_sprite.left += 162;
+            game->time_ref[TIME_CURSOR] = game->miliseconds;
+    }
+}
+
+void shift_cursor(sfRenderWindow *window, game_t *game)
+{
+    sfSprite_setTexture(game->sprite_init[CURSOR].sprite,
+    game->sprite_init[CURSOR].texture, sfTrue);
+    sfSprite_setScale(game->sprite_init[CURSOR].sprite, (sfVector2f){1.5,1.5});
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f mouse_pos_f = {mouse_pos.x - 53, mouse_pos.y - 75};
-    cursor->pos = mouse_pos_f;
-    sfSprite_setPosition(cursor->sprite, mouse_pos_f);
+    game->sprite_init[CURSOR].pos = mouse_pos_f;
+    sfSprite_setPosition(game->sprite_init[CURSOR].sprite, mouse_pos_f);
 
 }

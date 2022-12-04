@@ -5,16 +5,19 @@
 ** my hunter
 */
 
-#include "my_hunter.h"
+#include "include/my_hunter.h"
 
-void init_background(background_t *background)
+void init_background(game_t *game)
 {
-    background->texture = sfTexture_createFromFile("assets/level1.jpg", NULL);
-    background->sprite = sfSprite_create();
+    game->sprite_init[BACKGROUND_GAME].texture =
+    sfTexture_createFromFile("assets/level1.jpg", NULL);
+    game->sprite_init[BACKGROUND_GAME].sprite = sfSprite_create();
 }
 
-void set_background(sfRenderWindow *window, background_t *background)
+void set_background(sfRenderWindow *window, game_t *game)
 {
-    sfSprite_setTexture(background->sprite, background->texture, sfTrue);
-    sfRenderWindow_drawSprite(window, background->sprite, NULL);
+    sfSprite_setTexture(game->sprite_init[BACKGROUND_GAME].sprite,
+    game->sprite_init[BACKGROUND_GAME].texture, sfTrue);
+    sfRenderWindow_drawSprite(window,
+    game->sprite_init[BACKGROUND_GAME].sprite, NULL);
 }

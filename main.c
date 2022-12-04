@@ -4,10 +4,17 @@
 ** File description:
 ** my hunter
 */
-#include "my_hunter.h"
+#include "include/my_hunter.h"
 
-int main(void)
+int main(int argc, char const **argv)
 {
+    if (argc >= 2 && (my_strcmp(argv[1],"-h") == 0
+    || my_strcmp(argv[1],"help"))) {
+        help();
+        return 0;
+    } else if (argc >= 2) {
+        return 84;
+    }
     game();
-
+    return 0;
 }
