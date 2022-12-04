@@ -17,6 +17,7 @@ void display_player_h_score(sfRenderWindow *window,game_t *game)
     sfText_setString(game->text_init[H_SCORE].text, str3);
     sfRenderWindow_drawText(window, game->text_init[H_SCORE].text, NULL);
     free(str);
+    free(str2);
 }
 
 void display_player_lives(sfRenderWindow *window,game_t *game)
@@ -28,6 +29,7 @@ void display_player_lives(sfRenderWindow *window,game_t *game)
     sfText_setString(game->text_init[LIVES].text, str3);
     sfRenderWindow_drawText(window, game->text_init[LIVES].text, NULL);
     free(str);
+    free(str2);
 }
 
 
@@ -41,6 +43,7 @@ void display_player_score(sfRenderWindow *window,game_t *game)
     sfText_setString(game->text_init[SCORE].text, str3);
     sfRenderWindow_drawText(window, game->text_init[SCORE].text, NULL);
     free(str);
+    free(str2);
 }
 
 void get_player_score(game_t *game)

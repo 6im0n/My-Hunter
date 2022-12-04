@@ -26,6 +26,7 @@ int game(void)
         load_base(window, &game, &menu, &scene);
     }
     destroy_all(window, &game, &menu);
+    return 0;
 }
 
 void init_base(sfRenderWindow *window, game_t *game, menu_t *menu)

@@ -27,13 +27,12 @@ void init_logo(menu_t *menu)
 
 void init_quit_button(menu_t *menu)
 {
-    sfFont *font;
-    font = sfFont_createFromFile("assets/doom_font.ttf");
+    menu->text_init[CLOSE].font =  sfFont_createFromFile("assets/doom_font.ttf");
     menu->text_init[CLOSE].text = sfText_create();
     set_text_orange(menu, CLOSE);
     menu->text_init[CLOSE].pos.x = 1030;
     menu->text_init[CLOSE].pos.y = 500;
-    sfText_setFont(menu->text_init[CLOSE].text, font);
+    sfText_setFont(menu->text_init[CLOSE].text, menu->text_init[CLOSE].font);
     sfText_setCharacterSize(menu->text_init[CLOSE].text, 100);
     sfText_setPosition(menu->text_init[CLOSE].text,
     menu->text_init[CLOSE].pos);

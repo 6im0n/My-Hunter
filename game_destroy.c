@@ -19,9 +19,11 @@ void destroy_text(game_t *game, menu_t *menu)
 {
     for (int i = 0; i < GAME_TEXT_MAX; i++) {
         sfText_destroy(game->text_init[i].text);
+        sfFont_destroy(game->text_init[i].font);
     }
     for (int i = 0; i < MENU_TEXT_MAX; i++) {
         sfText_destroy(menu->text_init[i].text);
+        sfFont_destroy(menu->text_init[i].font);
     }
     free(game->text_init);
     free(menu->text_init);
