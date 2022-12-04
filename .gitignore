@@ -12,4 +12,6 @@ include/my.h
 real-time-norminette-report
 *.old
 libmy.a
-myhunter
+my_hunter
+save_score
+note.txt
