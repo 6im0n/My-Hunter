@@ -10,6 +10,7 @@ void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu)
 {
     destroy_sprite(game, menu);
     destroy_text(game, menu);
+    sfClock_restart(game->clock);
     sfClock_destroy(game->clock);
     free(game->time_ref);
     sfRenderWindow_destroy(window);
