@@ -7,7 +7,6 @@
 
 #include "include/my_hunter.h"
 
-
 void display_player_h_score(sfRenderWindow *window,game_t *game)
 {
     char *str = score_to_str(game->h_score);
@@ -31,7 +30,6 @@ void display_player_lives(sfRenderWindow *window,game_t *game)
     free(str);
     free(str2);
 }
-
 
 void display_player_score(sfRenderWindow *window,game_t *game)
 {

@@ -83,7 +83,8 @@
     void help(void);
     void init_base(sfRenderWindow *window, game_t *game, menu_t *menu);
     void close_event(sfRenderWindow *window, sfEvent event);
-    void load_base(sfRenderWindow *window, game_t *game, menu_t *menu, scene_t *scene);
+    void load_base(sfRenderWindow *window, game_t *game,
+    menu_t *menu, scene_t *scene);
     int get_score(void);
     void display_player_h_score(sfRenderWindow *window,game_t *game);
     void display_player_lives(sfRenderWindow *window,game_t *game);

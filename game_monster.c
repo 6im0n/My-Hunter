@@ -45,10 +45,9 @@ void set_animated_sprite(sfRenderWindow *window, game_t *game)
                 game->time_ref[TIME_MONSTER] = game->miliseconds;
             }
         }
-        sfSprite_setTextureRect(game->sprite_init[ANIMATED].sprite,
-        game->sprite_init[ANIMATED].rect_source_sprite);
-        sfRenderWindow_drawSprite(window,
-        game->sprite_init[ANIMATED].sprite, NULL);
+    sfSprite_setTextureRect(game->sprite_init[ANIMATED].sprite,
+    game->sprite_init[ANIMATED].rect_source_sprite);
+    sfRenderWindow_drawSprite(window,game->sprite_init[ANIMATED].sprite, NULL);
 }
 
 void shift_monster(game_t *game)
@@ -69,6 +68,6 @@ void shift_monster(game_t *game)
 
 void lives_manager(sfRenderWindow *window, game_t *game)
 {
-    if(game->lives == 0)
+    if (game->lives == 0)
         sfRenderWindow_close(window);
 }
