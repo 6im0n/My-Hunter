@@ -100,5 +100,6 @@
     void set_text_orange(menu_t *menu, int sprite_enum);
     void click_event_close(sfRenderWindow *window, scene_t *scene);
     void game_reset(sfRenderWindow *window,game_t *game);
+    void game_reset(sfRenderWindow *window,game_t *game);
 
 #endif /* !SFML_H_ */
