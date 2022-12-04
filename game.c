@@ -46,14 +46,23 @@ void load_base(sfRenderWindow *window, game_t
 *game, menu_t *menu, scene_t *scene)
 {
     event_manager_menu(window, scene, menu);
+    lives_manager(window,scene,game);
     if (scene->game == true)
         load_game(window, game);
-    else
+    else{
+        game_reset(window,game);
         load_menu(window,menu);
+    }
 }
 
 void close_event(sfRenderWindow *window, sfEvent event)
 {
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(window);
+}
+
+void game_reset(sfRenderWindow *window,game_t *game)
+{
+    game->score = 0;
+    game->lives = 3;
 }

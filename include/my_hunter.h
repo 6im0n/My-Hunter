@@ -78,8 +78,8 @@
     char *my_strcat(char *dest, char const *src);
     int my_strlen(char const *str);
     int my_getnbr(char const *str);
-    char * my_strdup ( char const * src );
-    char * my_strcpy ( char * dest , char const * src );
+    char *my_strdup ( char const * src );
+    char *my_strcpy ( char * dest , char const * src );
     void help(void);
     void init_base(sfRenderWindow *window, game_t *game, menu_t *menu);
     void close_event(sfRenderWindow *window, sfEvent event);
@@ -94,10 +94,11 @@
     void destroy_text(game_t *game, menu_t *menu);
     void destroy_sprite(game_t *game, menu_t *menu);
     void shift_monster(game_t *game);
-    void lives_manager(sfRenderWindow *window, game_t *game);
+    void lives_manager(sfRenderWindow *window,scene_t *scene, game_t *game);
     void move_texture_square(game_t *game);
     void save_hscore(game_t *game);
     void set_text_orange(menu_t *menu, int sprite_enum);
     void click_event_close(sfRenderWindow *window, scene_t *scene);
+    void game_reset(sfRenderWindow *window,game_t *game);
 
 #endif /* !SFML_H_ */

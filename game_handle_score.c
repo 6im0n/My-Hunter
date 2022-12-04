@@ -50,8 +50,7 @@ void get_player_score(game_t *game)
         if (shooted_monster(game)) {
                 game->score += 1;
                 save_hscore(game);
-                game->sprite_init[ANIMATED].pos.y =
-                game->sprite_init[ANIMATED].pos.y + game->ramdom_y ;
+                game->sprite_init[ANIMATED].pos.y = rand() % 900 ;
                 game->sprite_init[ANIMATED].pos.x = 0;
                 game->shooted = true;
         }

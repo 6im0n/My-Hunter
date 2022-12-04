@@ -17,10 +17,8 @@ void init_animated(game_t *game)
     game->sprite_init[ANIMATED].rect_source_sprite.top = 0;
     game->sprite_init[ANIMATED].rect_source_sprite.height = 92;
     game->sprite_init[ANIMATED].rect_source_sprite.width = 72;
-    game->ramdom_y = rand() % 1000;
     game->sprite_init[ANIMATED].sprite = sfSprite_create();
     game->sprite_init[ANIMATED].pos.x = 0.0;
-    game->sprite_init[ANIMATED].pos.y = 0.0;
     game->sprite_init[ANIMATED].texture = sfTexture_createFromFile
     ("assets/monsters.png",
     &game->sprite_init[ANIMATED].rect_full_source_sprite);
@@ -41,7 +39,6 @@ void set_animated_sprite(sfRenderWindow *window, game_t *game)
             } else {
                 game->sprite_init[ANIMATED].rect_source_sprite.left += 73;
                 shift_monster(game);
-                lives_manager(window,game);
                 game->time_ref[TIME_MONSTER] = game->miliseconds;
             }
         }
@@ -52,22 +49,16 @@ void set_animated_sprite(sfRenderWindow *window, game_t *game)
 
 void shift_monster(game_t *game)
 {
+    srand(time(0));
     game->sprite_init[ANIMATED].pos.x = game->sprite_init[ANIMATED].pos.x + 20;
     game->sprite_init[ANIMATED].pos.y = game->sprite_init[ANIMATED].pos.y + 1;
     if (game->sprite_init[ANIMATED].pos.x > 1860){
-        game->sprite_init[ANIMATED].pos.x = 0.0;
-        game->sprite_init[ANIMATED].pos.y =
-        game->sprite_init[ANIMATED].pos.y + game->ramdom_y;
+        game->sprite_init[ANIMATED].pos.x = -100;
+        game->sprite_init[ANIMATED].pos.y = rand() % 850;
         game->lives--;
     }
     if (game->sprite_init[ANIMATED].pos.y > 1000)
         game->sprite_init[ANIMATED].pos.y = 0.0;
     sfSprite_setPosition(game->sprite_init[ANIMATED].sprite,
     game->sprite_init[ANIMATED].pos);
-}
-
-void lives_manager(sfRenderWindow *window, game_t *game)
-{
-    if (game->lives == 0)
-        sfRenderWindow_close(window);
 }

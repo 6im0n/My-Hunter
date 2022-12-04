@@ -30,6 +30,7 @@
         LIVES,
         SCORE,
         H_SCORE,
+        G_OVER,
         GAME_TEXT_MAX
     } game_text_t;
 
