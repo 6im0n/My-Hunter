@@ -25,7 +25,7 @@ int game(void)
         srand(time(0));
         load_base(window, &game, &menu, &scene);
     }
-    destroy_all(window, &game, &menu);
+    destroy_all(window, &game, &menu, &scene);
     return 0;
 }
 
@@ -34,6 +34,7 @@ void init_base(sfRenderWindow *window, game_t *game, menu_t *menu)
     game->time_ref = 0;
     game->score = 0;
     game->lives = 3;
+    game->game_over = 0;
     game->h_score = get_score();
     sfRenderWindow_setFramerateLimit(window, 60);
     malloc_all_struct(menu, game);

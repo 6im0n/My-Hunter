@@ -79,6 +79,7 @@
         float miliseconds;
         int ramdom_y;
         bool shooted;
+        int game_over;
         int score;
         int h_score;
         int lives;

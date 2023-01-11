@@ -65,7 +65,7 @@
     void get_player_score(game_t *game);
     void shift_cursor(sfRenderWindow *window, game_t *game);
     void shift_monster(game_t *game);
-    void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu);
+    void destroy_all(sfRenderWindow *window, game_t *game, menu_t *menu, scene_t *scene);
     void orange_color(menu_t *menu, int sprite_enum);
     void set_buttons(sfRenderWindow *window, menu_t *menu);
     bool shooted_monster(game_t *game);
@@ -91,7 +91,7 @@
     void init_h_score(game_t *game);
     void init_hunter_logo(menu_t *menu);
     void init_lives(game_t *game);
-    void destroy_text(game_t *game, menu_t *menu);
+    void destroy_text(game_t *game, menu_t *menu, scene_t *scene);
     void destroy_sprite(game_t *game, menu_t *menu);
     void shift_monster(game_t *game);
     void lives_manager(sfRenderWindow *window,scene_t *scene, game_t *game);

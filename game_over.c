@@ -37,6 +37,7 @@ void lives_manager(sfRenderWindow *window, scene_t *scene, game_t *game)
         display_game_over(window,game);
         sfRenderWindow_setMouseCursorVisible(window,sfTrue);
         sfSleep(sfMilliseconds(2000));
+        game->game_over++;
         scene->game = false;
         sfRenderWindow_clear(window, sfBlack);
     }
